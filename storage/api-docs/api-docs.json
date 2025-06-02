@@ -1,0 +1,134 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Beneficios Kuantaz",
+        "description": "Documentación de la API técnica para el desafío de Kuantaz",
+        "contact": {
+            "email": "jose@correo.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://my-default-host.com",
+            "description": "Servidor API local"
+        }
+    ],
+    "paths": {
+        "/api/beneficios-filtrados": {
+            "get": {
+                "tags": [
+                    "Beneficios"
+                ],
+                "summary": "Obtiene beneficios agrupados y filtrados por año",
+                "description": "Este endpoint agrupa los beneficios por año, filtrando por monto según los filtros y anidando la ficha correspondiente.",
+                "operationId": "obtenerBeneficiosFiltrados",
+                "responses": {
+                    "200": {
+                        "description": "Listado de beneficios agrupados",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer",
+                                            "example": 200
+                                        },
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "year": {
+                                                        "type": "integer",
+                                                        "example": 2024
+                                                    },
+                                                    "num": {
+                                                        "type": "integer",
+                                                        "example": 2
+                                                    },
+                                                    "beneficios": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "properties": {
+                                                                "id_programa": {
+                                                                    "type": "integer",
+                                                                    "example": 147
+                                                                },
+                                                                "monto": {
+                                                                    "type": "number",
+                                                                    "example": 40656
+                                                                },
+                                                                "fecha_recepcion": {
+                                                                    "type": "string",
+                                                                    "example": "09/11/2024"
+                                                                },
+                                                                "fecha": {
+                                                                    "type": "string",
+                                                                    "example": "2024-11-09"
+                                                                },
+                                                                "ano": {
+                                                                    "type": "string",
+                                                                    "example": "2024"
+                                                                },
+                                                                "view": {
+                                                                    "type": "boolean",
+                                                                    "example": true
+                                                                },
+                                                                "ficha": {
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "integer",
+                                                                            "example": 922
+                                                                        },
+                                                                        "nombre": {
+                                                                            "type": "string",
+                                                                            "example": "Emprende"
+                                                                        },
+                                                                        "id_programa": {
+                                                                            "type": "integer",
+                                                                            "example": 147
+                                                                        },
+                                                                        "url": {
+                                                                            "type": "string",
+                                                                            "example": "emprende"
+                                                                        },
+                                                                        "categoria": {
+                                                                            "type": "string",
+                                                                            "example": "trabajo"
+                                                                        },
+                                                                        "descripcion": {
+                                                                            "type": "string",
+                                                                            "example": "Fondos concursables para nuevos negocios"
+                                                                        }
+                                                                    },
+                                                                    "type": "object"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Beneficios",
+            "description": "Beneficios"
+        }
+    ]
+}
