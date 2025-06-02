@@ -1,0 +1,118 @@
+{
+	"info": {
+		"_postman_id": "a0f490a9-b33c-4f32-8f57-3dc79d2203ff",
+		"name": "REST API basics: CRUD, test & variable",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" alt=\"\" height=\"1530\" width=\"2162\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42500758"
+	},
+	"item": [
+		{
+			"name": "Post data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"beneficios\": [\n    {\n      \"id_filtro\": 1,\n      \"monto\": 45000,\n      \"fecha\": \"2023-09-15\",\n      \"id_programa\": 130\n    },\n    {\n      \"id_filtro\": 2,\n      \"monto\": 20000,\n      \"fecha\": \"2024-01-05\",\n      \"id_programa\": 147\n    }\n  ],\n  \"filtros\": [\n    {\n      \"id\": 1,\n      \"min\": 40000,\n      \"max\": 50000,\n      \"id_ficha\": 2042\n    },\n    {\n      \"id\": 2,\n      \"min\": 10000,\n      \"max\": 30000,\n      \"id_ficha\": 922\n    }\n  ],\n  \"fichas\": [\n    {\n      \"id\": 2042,\n      \"nombre\": \"Subsidio Familiar (SUF)\",\n      \"id_programa\": 130,\n      \"url\": \"subsidio_familiar_suf\",\n      \"categoria\": \"bonos\",\n      \"descripcion\": \"Beneficio económico mensual entregado a madres, padres o tutores que no cuentan con previsión social.\"\n    },\n    {\n      \"id\": 922,\n      \"nombre\": \"Emprende\",\n      \"id_programa\": 147,\n      \"url\": \"emprende\",\n      \"categoria\": \"trabajo\",\n      \"descripcion\": \"Fondos concursables para nuevos negocios\"\n    }\n  ]\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/beneficios-test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"beneficios-test"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Post data",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"beneficios\": [\n    {\n      \"id_filtro\": 1,\n      \"monto\": 45000,\n      \"fecha\": \"2023-09-15\",\n      \"id_programa\": 130\n    },\n    {\n      \"id_filtro\": 2,\n      \"monto\": 20000,\n      \"fecha\": \"2024-01-05\",\n      \"id_programa\": 147\n    }\n  ],\n  \"filtros\": [\n    {\n      \"id\": 1,\n      \"min\": 40000,\n      \"max\": 50000,\n      \"id_ficha\": 2042\n    },\n    {\n      \"id\": 2,\n      \"min\": 10000,\n      \"max\": 30000,\n      \"id_ficha\": 922\n    }\n  ],\n  \"fichas\": [\n    {\n      \"id\": 2042,\n      \"nombre\": \"Subsidio Familiar (SUF)\",\n      \"id_programa\": 130,\n      \"url\": \"subsidio_familiar_suf\",\n      \"categoria\": \"bonos\",\n      \"descripcion\": \"Beneficio económico mensual entregado a madres, padres o tutores que no cuentan con previsión social.\"\n    },\n    {\n      \"id\": 922,\n      \"nombre\": \"Emprende\",\n      \"id_programa\": 147,\n      \"url\": \"emprende\",\n      \"categoria\": \"trabajo\",\n      \"descripcion\": \"Fondos concursables para nuevos negocios\"\n    }\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/beneficios-test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"beneficios-test"
+							]
+						}
+					},
+					"_postman_previewlanguage": "",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}
